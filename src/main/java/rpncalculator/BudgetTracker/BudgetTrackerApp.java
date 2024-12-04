@@ -21,29 +21,29 @@ public class BudgetTrackerApp extends Application {
     public void start(Stage primaryStage) {
         tracker = new BudgetTracker();
 
-
+        //Creates label to show current balance
         Label balanceLabel = new Label("Current Balance: 0.00");
         balanceLabel.setFont(new Font(18));
-
+        //Creates TextField to enter new income amount
         TextField incomeField = new TextField();
         incomeField.setPromptText("Enter income amount");
-
+        //Creates TextField to enter expense amount
         TextField expenseField = new TextField();
         expenseField.setPromptText("Enter expense amount");
-
+        //Creates Buttons
         Button addIncomeButton = new Button("Add Income");
         Button addExpenseButton = new Button("Add Expense");
         Button resetButton = new Button("Reset Balance");
         Button exitButton = new Button("Exit");
 
-
+        //This creates the GridPane layout
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(20, 20, 20, 20));
         grid.setVgap(10);
         grid.setHgap(15);
         grid.setAlignment(Pos.CENTER);
 
-
+        //This adds the UI components to the grid
         grid.add(new Label("Income Amount:"), 0, 0);
         grid.add(incomeField, 1, 0);
         grid.add(new Label("Expense Amount:"), 0, 1);
@@ -54,6 +54,7 @@ public class BudgetTrackerApp extends Application {
         grid.add(resetButton, 0, 4);
         grid.add(exitButton, 1, 4);
 
+        //Expense value and subtract from the balance
         addIncomeButton.setOnAction(e -> {
             try {
                 double income = Double.parseDouble(incomeField.getText());
@@ -89,7 +90,7 @@ public class BudgetTrackerApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
+//Creates the error handling
     private void showError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
